@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Form</title>
+  <link rel="icon" href="./images/student.png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <h2 class="head">STUDENT FORM</h2>
+  <div class="form">
+    <form id="studentForm">
+      <table>
+        <tr>
+          <td>Name</td>
+          <td><input type="text" id="name" placeholder="Name" required></td>
+        </tr>
+
+        <tr>
+          <td>Age</td>
+          <td><input type="number" id="age" placeholder="Age" required></td>
+        </tr>
+
+
+        <tr>
+          <td>Gender</td>
+          <td><input type="radio" name="gender" value="Male" required style="width: 20%;height: 15px;"> Male
+              <input type="radio" name="gender" value="Female" style="width: 20%;height: 15px;" > Female</td>
+          
+        </tr>
+
+        <tr>
+          <td>Course</td>
+          <td><select id="course" required style="height: auto;">
+              <option value="">Select Course</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="PYTHON">Python</option>
+              <option value="HTML">Html</option>
+            </select></td>
+        </tr>
+
+        <tr>
+          <td>E-mail</td>
+          <td><input type="email" id="email" placeholder="E-mail" required></td>
+        </tr>
+        </table>
+
+        <button type="submit" class="button" id="sub-button">Save</button>
+    </form>
+
+  </div>
+  <div class="table-color">
+    <table id="studentTable">
+      <thead>
+        <tr>
+         
+          <th>NAME</th>
+          <th>AGE</th>
+          <th>GENDER</th>
+          <th>COURSE</th>
+          <th>E-MAIL</th>
+          <th>ACTION</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      </tbody>
+
+    </table>
+  </div>
+
+  <br><br>
+
+  <script>
+         const studentForm = document.getElementById("studentForm");
+        const studentTableBody = document.querySelector("#studentTable tbody");
+        const subButton = document.getElementById("sub-button")
+        const tablecolor = document.querySelector(".table-color")
+
+  studentForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const age = document.getElementById("age").value;
+    const gender = document.querySelector('input[name="gender"]:checked').value;
+    const course = document.getElementById("course").value;
+    const email = document.getElementById("email").value;
+
+    const newRow = document.createElement("tr");
+    newRow.classList.add("studentNew")
+
+    newRow.innerHTML = `
+      
+      <td>${name}</td>
+      <td>${age}</td>
+      <td>${gender}</td>
+      <td>${course}</td>
+      <td>${email}</td>
+      <td><button onclick="child(event)" class="newrow">Delete</button></td>
+    `;
+
+    studentTableBody.appendChild(newRow);
+
+    // Clear the form
+    studentForm.reset();
+  });
+
+/*document.querySelector("#studentTable tbody").addEventListener("click", function(event) {
+  if (event.target.classList.contains("delete-btn")) {
+    event.target.closest("tr").remove();
+  }
+});*/
+
+subButton.addEventListener("click",function(){
+
+  tablecolor.style.display="block"
+})
+
+function child(event){
+    event.target.closest("tr").remove()
+}
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+

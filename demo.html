@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+    <link rel="icon" href="./images/student.png">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+
+    text-align: center;
+    color: #333;
+    padding: 20px;
+}
+
+
+.head{
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+.form{
+
+   margin: auto;
+   padding: 25px 30px;
+   background-color: #ffffff;
+   line-height: 3 ;
+   width: 320px;
+   border: 1px solid grey;
+   border-radius: 12px;
+   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  
+   
+}
+
+.form table {
+
+   width: 100%;
+   margin-bottom: 10px;
+}
+
+.form input,form select{
+
+    width: 100%;
+    padding: 8px;
+    height: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+
+.button{
+
+    width: 100%;
+    padding: 10px;
+    background-color: #27ae60;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.table-color{
+
+    width: 100%;
+    margin: 30px auto 0;
+    overflow: auto;
+
+}
+
+.table-color table{
+
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-color th,.table-color td{
+
+    border: 1px solid #cdc8c8;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.table-color,th{
+
+    background-color: #43576b;
+    color: white;
+}
+
+.delete-Btn{
+
+    background-color: #e74c3c;
+    color: white;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-Btn:hover{
+
+    background-color: #c0392b;
+}
+
+tr.disabled{
+    opacity:0.5;
+    pointer-events: none;
+}
+    </style>
+</head>
+
+<body>
+    <h2 class="head">STUDENT FORM</h2>
+    <div class="form">
+        <form id="studentForm">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" id="name" placeholder="Name" required></td>
+                </tr>
+
+                <tr>
+                    <td>Age</td>
+                    <td><input type="number" id="age" placeholder="Age" required></td>
+                </tr>
+
+
+                <tr>
+                    <td>Gender</td>
+                    <td><input type="radio" name="gender" value="Male" required style="width: 20%;height: 15px;"> Male
+                        <input type="radio" name="gender" value="Female" style="width: 20%;height: 15px;"> Female
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Course</td>
+                    <td><select id="course" required style="height: auto;">
+                            <option value="">Select Course</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="PYTHON">Python</option>
+                            <option value="HTML">Html</option>
+                        </select></td>
+                </tr>
+
+                <tr>
+                    <td>E-mail</td>
+                    <td><input type="email" id="email" placeholder="E-mail" required></td>
+                </tr>
+            </table>
+
+            <button type="submit" class="button">Save</button>
+        </form>
+
+    </div>
+    <div class="table-color">
+            <table id="studentTable">
+                <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>AGE</th>
+                        <th>GENDER</th>
+                        <th>COURSE</th>
+                        <th>E-MAIL</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+
+        <tbody class="childbody">
+        </tbody>
+
+        </table>
+    </div>
+
+    <br><br>
+
+    <script>
+         const studentForm = document.getElementById("studentForm");
+        const studentTableBody = document.querySelector("#studentTable tbody");
+
+  studentForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const age = document.getElementById("age").value;
+    const gender = document.querySelector('input[name="gender"]:checked').value;
+    const course = document.getElementById("course").value;
+    const email = document.getElementById("email").value;
+
+    const newRow = document.createElement("tr");
+    newRow.classList.add("new-Row")
+
+    newRow.innerHTML = `
+      
+      <td>${name}</td>
+      <td>${age}</td>
+      <td>${gender}</td>
+      <td>${course}</td>
+      <td>${email}</td>
+      <td><button onclick="child(event)">Delete</button></td>
+    `;
+
+    studentTableBody.appendChild(newRow);
+
+    // Clear the form
+    studentForm.reset();
+  });
+
+/*document.querySelector("#studentTable tbody").addEventListener("click", function(event) {
+  if (event.target.classList.contains("delete-btn")) {
+    event.target.closest("tr").remove();
+  }
+});*/
+
+function child(event){
+    event.target.closest("tr").remove()
+}
+    </script>
+</body>
+
+</html>

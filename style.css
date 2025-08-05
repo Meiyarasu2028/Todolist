@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+
+    text-align: center;
+    color: #333;
+    padding: 20px;
+}
+
+
+.head{
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+.form{
+
+   margin: auto;
+   padding: 25px 30px;
+   background-color: #ffffff;
+   line-height: 3 ;
+   width: 320px;
+   border: 1px solid grey;
+   border-radius: 12px;
+   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  
+   
+}
+
+.form table {
+
+   width: 100%;
+   margin-bottom: 10px;
+}
+
+.form input,form select{
+
+    width: 100%;
+    padding: 8px;
+    height: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+
+.button{
+
+    width: 100%;
+    padding: 10px;
+    background-color: #27ae60;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.table-color{
+
+    width: 100%;
+    margin: 30px auto 0;
+    overflow: auto;
+    display: none;
+
+}
+
+.table-color table{
+
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-color th,.table-color td{
+
+    border: 1px solid #cdc8c8;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.table-color,th{
+
+    background-color: #43576b;
+    color: white;
+}
+
+.newrow{
+
+    background-color: #e74c3c;
+    color: white;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.newrow:hover{
+
+    background-color: #c0392b;
+    transform: scale(1.1);
+
+}
+
+.studentNew{
+    background-color: rgb(229, 226, 226);
+    color: rgb(57, 55, 55);
+   
+}
